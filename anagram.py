@@ -1,0 +1,29 @@
+def anagrams(S):
+    # S is a set of strings
+    d={}    # maps s to list of words with signature s
+
+    for word in S:                      # group words according to the signature
+        s = ''.join(sorted(word))       # calculate the signature
+        if s in d:
+            d[s].append(word)           # append a word to an existing signature
+        else:
+            d[s] = [word]          # add a new signature and its first word
+        # -- extract anagrams, ingoring anagram groups of size 1
+    return [d[s]for s in d if len(d[s]) > 0]
+
+def anagrams2(s1, s2):
+    if(sorted(s1)== sorted(s2)):
+        print("The strings are anagrams.")
+    else:
+        print("The strings aren't anagrams.")        
+
+#solution 1
+#results = anagrams("bowel")
+
+#solution 2
+s1 ="arc"
+s2 ="car"
+results = anagrams2(s1, s2)
+
+print(results)
+
